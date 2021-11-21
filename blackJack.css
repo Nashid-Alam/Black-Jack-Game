@@ -1,0 +1,53 @@
+section{
+  display:flex;
+}
+.counterPlayer1{
+  height:200px;
+  width:100px;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:auto
+
+}
+
+.counterComputer{
+  height:200px;
+  width:100px;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:auto
+
+}
+
+.cardLayout{
+  display: flex;
+  flex-direction: column;
+  height:200px;
+  width:100px;
+  background-color: white;
+  border-style: double;
+  border-color: black;
+
+}
+.suitBottom{
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  font-size: 20px;
+}
+.card{
+  display: flex;
+  position: relative;
+  height: 70%;
+  width:70%;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  border-style: double;
+  border-color: black;
+  font-size: 40px;
+}
