@@ -58,11 +58,23 @@ function hitCardPlayer1(e) {
   const cardSuitTop = document.createElement("div")
   const cardValue = document.createElement("div")
   const cardSuitBottom = document.createElement("div")
-
+if(randomDraw.suit === '&hearts;' || randomDraw.suit === '&diams;'){
+  cardSuitTop.style.color = "red"
   cardSuitTop.innerHTML = randomDraw.suit
+  cardValue.style.color = "red"
   cardValue.innerHTML = randomDraw.card
+  cardSuitBottom.style.color = "red"
+  cardSuitBottom.innerHTML = randomDraw.suit
+}
+else{
+  cardSuitTop.style.color = "black"
+  cardSuitTop.innerHTML = randomDraw.suit
+  cardValue.style.color = "black"
+  cardValue.innerHTML = randomDraw.card
+  cardSuitBottom.style.color = "black"
   cardSuitBottom.innerHTML = randomDraw.suit
 
+}
   cardLi.className = "cardLayout"
   cardSuitTop.className = "suitTop"
   cardValue.className = "card"
