@@ -1,7 +1,29 @@
+body{
+  display: flex;
+  flex-direction: row;
+}
+.card-counter{
+  display: flex;
+  flex-direction: row;
+}
 section{
   display:flex;
+  flex-direction: column;
+  margin: auto;
 }
 .counterPlayer1{
+  height:60px;
+  width:60px;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  margin: 40px;
+
+} 
+
+/* .counterComputer{
   height:200px;
   width:100px;
   background-color: aqua;
@@ -10,27 +32,18 @@ section{
   align-items: center;
   margin:auto
 
-}
-
-.counterComputer{
-  height:200px;
-  width:100px;
-  background-color: aqua;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin:auto
-
-}
+} */
 
 .cardLayout{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height:200px;
   width:100px;
-  background-color: white;
+  background-color:whitesmoke;
   border-style: double;
-  border-color: black;
+  border-color:gray;
+  margin: -80px 0px 0px 0px;
+  opacity: 0.7;
 
 }
 .suitBottom{
@@ -48,6 +61,18 @@ section{
   align-items: center;
   margin:auto;
   border-style: double;
-  border-color: black;
+  border-color:gray;
   font-size: 40px;
+  fill-opacity: 1;
+}
+.computer-section{
+  margin: 70px;
+}
+.hit1{
+  margin:100px;
+}
+.stand1{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 }
