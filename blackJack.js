@@ -15,7 +15,7 @@ const computer = {
   isPlaying: false,
   handScore: 0,
 }
-
+const scoreBoard =document.querySelector(".money")
 const hitButton = document.querySelector(".hitButton")
 const standButton = document.querySelector(".standButton")
 
@@ -42,7 +42,16 @@ for (let i = 0; i < cards.length; i++) {
     deck.push(card)
   }
 }
+//shuffle the deck
 
+for (let i = deck.length - 1; i > 0; i--) {
+  let j = Math.floor(Math.random() * i);
+  let temp = deck[i];
+  deck[i] = deck[j];
+  deck[j] = temp;
+}
+
+console.log(deck)
 // Draw card function
 function drawCard() {
   if (!gameOver) {
@@ -56,14 +65,20 @@ function hitMe(player) {
   if (!player.isPlaying) {
     return
   }
-
   if (player.handScore >= 21) {
-    return
+    return 
   }
 
   const card = drawCard()
   player.hand.push(card)
-  player.handScore = player.handScore + card.value
+  if(card.card !='A'){
+  player.handScore = player.handScore + card.value}
+  if(card.card ==='A'&& player.handScore<=10){
+  player.handScore = player.handScore + 11
+  } 
+  if(card.card ==='A' && player.handScore > 10){
+    player.handScore = player.handScore + 1
+  }
 
   const cardLi = document.createElement("li")
   const cardSuitTop = document.createElement("div")
@@ -95,6 +110,15 @@ function hitMe(player) {
 
   const handOl = document.querySelector(`#${player.name}-hand`)
   handOl.append(cardLi)
+  
+  if ((player1.handScore === 21)) {
+      console.log("player 1 wins")
+     }
+  if (player1.handScore > 21) {
+    console.log("player 1 loses")
+    
+   }
+
 }
 
 // Event Litsener Functions
@@ -107,6 +131,7 @@ function standPlayer(e) {
   player1.isPlaying = false
   computer.isPlaying = true
   computerGoes()
+     
 }
 
 function computerGoes() {
@@ -115,30 +140,44 @@ function computerGoes() {
     computerScoreDisplay.innerHTML = computer.handScore
     // settimer before running the loop again
   }
+  if (computer.handScore > 21) {
+    return console.log("computer loses and player 1 wins")
+    }
+   
+ if (player1.handScore > computer.handScore && player1.handScore<=21) {
+    return console.log("computer loses and player 1 wins")
+   } 
+   
+ if (player1.handScore === computer.handScore) {
+   return console.log('its a tie!!')
+   } else {
+     return console.log("player 1 loses computer wins")
+   }
+  
 }
 
 // win conditions
-if ((player1.handScore = 21)) {
-  console.log("player 1 wins")
-}
+// if ((player1.handScore = 21)) {
+//   console.log("player 1 wins")
+// }
 
-if (player1.handScore > 21) {
-  console.log("player 1 loses")
-}
+// if (player1.handScore > 21) {
+//   console.log("player 1 loses")
+// }
 
-if (computer.handScore > 21) {
-  console.log("computer loses and player 1 wins")
-}
+// if (computer.handScore > 21) {
+//   console.log("computer loses and player 1 wins")
+// }
 
-if (player1.handScore > computer.handScore) {
-  console.log("computer loses and player 1 wins")
-} 
+// if (player1.handScore > computer.handScore) {
+//   console.log("computer loses and player 1 wins")
+// } 
 
-if (player1.handScore = computer.handScore) {
-  console.log('its a tie!!')
-} else {
-  console.log("player 1 loses computer wins")
-}
+// if (player1.handScore = computer.handScore) {
+//   console.log('its a tie!!')
+// } else {
+//   console.log("player 1 loses computer wins")
+// }
 
 //(computerCounter>=17 && computerCounter<=21){
 //   if(player1Counter>computerCounter){
