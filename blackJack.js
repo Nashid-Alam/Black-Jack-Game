@@ -24,7 +24,7 @@ const resetButton = document.querySelector(".resetButton")
 const playerScoreDisplay = document.querySelector("#player1Score")
 const computerScoreDisplay = document.querySelector("#computerScore")
 
-//Generates the deck
+function generateDeck(){
 for (let i = 0; i < cards.length; i++) {
   for (let j = 0; j < suits.length; j++) {
     let value = null
@@ -44,15 +44,18 @@ for (let i = 0; i < cards.length; i++) {
     deck.push(card)
   }
 }
+}
+generateDeck()
 //shuffle the deck
-
+function shuffledeck(){
 for (let i = deck.length - 1; i > 0; i--) {
   let j = Math.floor(Math.random() * i);
   let temp = deck[i];
   deck[i] = deck[j];
   deck[j] = temp;
 }
-
+}
+shuffledeck()
 console.log(deck)
 // Draw card function
 function drawCard() {
