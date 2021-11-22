@@ -1,77 +1,61 @@
-body{
-  display: flex;
-  flex-direction: row;
-}
-.card-counter{
-  display: flex;
-  flex-direction: row;
-}
-section{
-  display:flex;
-  flex-direction: column;
-  margin: auto;
-}
-.counterPlayer1{
-  height:60px;
-  width:60px;
+section {
+
+  border-style: solid;
+  border-color: black;
   background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  height: 250px;
+}
+.currentScore{
+  background-color: brown;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.7;
-  margin: 40px;
-
-} 
-
-/* .counterComputer{
-  height:200px;
-  width:100px;
-  background-color: aqua;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin:auto
-
-} */
-
-.cardLayout{
-  display: flex;
-  flex-direction: row;
-  height:200px;
-  width:100px;
-  background-color:whitesmoke;
+  font-size: 50px;
+}
+ol {
+  display: inline-flex;
+  height: 100%;
+  margin-left: 100px;
+  list-style: none;
+}
+.cardLayout {
+  display: inline-block;
+  height: 200px;
+  width: 120px;
+  background-color: whitesmoke;
   border-style: double;
-  border-color:gray;
-  margin: -80px 0px 0px 0px;
+  border-color: gray;
+  margin: 0px 0px 0px -80px;
   opacity: 0.7;
-
+  
 }
-.suitBottom{
-  display:flex;
-  justify-content:flex-end;
-  align-items:flex-end;
+.suitBottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   font-size: 20px;
 }
-.card{
+.card {
   display: flex;
   position: relative;
   height: 70%;
-  width:70%;
+  width: 70%;
   justify-content: center;
   align-items: center;
-  margin:auto;
+  margin: auto;
   border-style: double;
-  border-color:gray;
+  border-color: gray;
   font-size: 40px;
   fill-opacity: 1;
 }
-.computer-section{
-  margin: 70px;
+
+.hit1 {
+  margin: 100px;
 }
-.hit1{
-  margin:100px;
-}
-.stand1{
+.stand1 {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
