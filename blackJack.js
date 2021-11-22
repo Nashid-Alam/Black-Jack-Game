@@ -106,50 +106,41 @@ function hitPlayer(e) {
 function standPlayer(e) {
   player1.isPlaying = false
   computer.isPlaying = true
-
-  // run the computer function
+  computerGoes()
 }
 
-// function
-
-function computerTurn() {
-  //if(playerIsPlaying = false){
-  randomIndex = Math.floor(Math.random() * deck.length)
-  randomDraw = deck[randomIndex]
-  computerHand.push(randomDraw)
-
-  const handOlComputer = document.querySelector("#computer-hand")
-  const cardLiComputer = document.createElement("li")
-  const cardSuitTopComputer = document.createElement("div")
-  const cardValueComputer = document.createElement("div")
-  const cardSuitBottomComputer = document.createElement("div")
-
-  cardSuitTopComputer.innerHTML = randomDraw.suit
-  cardValueComputer.innerHTML = randomDraw.card
-  cardSuitBottomComputer.innerHTML = randomDraw.suit
-
-  cardLiComputer.className = "cardLayout"
-  cardSuitTopComputer.className = "suitTop"
-  cardValueComputer.className = "card"
-  cardSuitBottomComputer.className = "suitBottom"
-
-  cardLiComputer.append(cardSuitTopComputer)
-  cardLiComputer.append(cardValueComputer)
-  cardLiComputer.append(cardSuitBottomComputer)
-  handOlComputer.append(cardLiComputer)
-
-  computerCounter = computerCounter + randomDraw.value
-  countercomputerDisplay.innerHTML = computerCounter
-  // display card
-  // updater the computerCounter
-  // WHILE the compterCounter is less than 17
-  // grab random cards and push them into the computer hand, keep doing this until counter is 17 or more
-
-  // once you are out of the while loop check the score and display the correct messages
-  //}
+function computerGoes() {
+  while (computer.handScore < 17) {
+    hitMe(computer)
+    computerScoreDisplay.innerHTML = computer.handScore
+    // settimer before running the loop again
+  }
 }
-// win condition
-// if(computerCounter>=17 && computerCounter<=21){
+
+// win conditions
+if ((player1.handScore = 21)) {
+  console.log("player 1 wins")
+}
+
+if (player1.handScore > 21) {
+  console.log("player 1 loses")
+}
+
+if (computer.handScore > 21) {
+  console.log("computer loses and player 1 wins")
+}
+
+if (player1.handScore > computer.handScore) {
+  console.log("computer loses and player 1 wins")
+} 
+
+if (player1.handScore = computer.handScore) {
+  console.log('its a tie!!')
+} else {
+  console.log("player 1 loses computer wins")
+}
+
+//(computerCounter>=17 && computerCounter<=21){
 //   if(player1Counter>computerCounter){
 //     console.log("player 1 wins")
 //   }
@@ -161,75 +152,3 @@ function computerTurn() {
 //Event listeners
 hitButton.addEventListener("click", hitPlayer)
 standButton.addEventListener("click", standPlayer)
-
-
-
-
-
-
-
-// let playerHand = []
-// let player1Counter = 0
-// let playerIsPlaying = true
-// let computerHand = []
-// let computerCounter = 0
-
-
-
-// const counterPlayer1Display = document.querySelector(".counterPlayer1")
-// const countercomputerDisplay = document.querySelector(".counterComputer")
-// const hit2 = document.querySelector(".hit2")
-// const stand2 = document.querySelector(".stand2")
-
-// hitCardPlayer1(e) {
-//   if (!playerIsPlaying) {
-//     return
-//   }
-
-//   if (player1Counter >= 21) {
-//     // Do things here because game is over.  Either player1 lost = Bust, or player1 won
-//     return
-//   }
-
-//   randomIndex = Math.floor(Math.random() * deck.length)
-//   randomDraw = deck[randomIndex]
-//   playerHand.push(randomDraw)
-
-//   const handOl = document.querySelector("#player1-hand")
-//   const cardLi = document.createElement("li")
-//   const cardSuitTop = document.createElement("div")
-//   const cardValue = document.createElement("div")
-//   const cardSuitBottom = document.createElement("div")
-//   if (randomDraw.suit === "&hearts;" || randomDraw.suit === "&diams;") {
-//     cardSuitTop.style.color = "red"
-//     cardSuitTop.innerHTML = randomDraw.suit
-//     cardValue.style.color = "red"
-//     cardValue.innerHTML = randomDraw.card
-//     cardSuitBottom.style.color = "red"
-//     cardSuitBottom.innerHTML = randomDraw.suit
-//   } else {
-//     cardSuitTop.style.color = "black"
-//     cardSuitTop.innerHTML = randomDraw.suit
-//     cardValue.style.color = "black"
-//     cardValue.innerHTML = randomDraw.card
-//     cardSuitBottom.style.color = "black"
-//     cardSuitBottom.innerHTML = randomDraw.suit
-//   }
-//   cardLi.className = "cardLayout"
-//   cardSuitTop.className = "suitTop"
-//   cardValue.className = "card"
-//   cardSuitBottom.className = "suitBottom"
-
-//   cardLi.append(cardSuitTop)
-//   cardLi.append(cardValue)
-//   cardLi.append(cardSuitBottom)
-//   handOl.append(cardLi)
-
-//   player1Counter = player1Counter + randomDraw.value
-//   counterPlayer1Display.innerHTML = player1Counter
-// }
-
-// // Stand function
-// // function standPlayer1(e) {
-// //   playerIsPlaying = false
-// // }
