@@ -166,8 +166,20 @@ function computerGoes() {
 
 
 function playAgain(){
-  location.reload();
-  scoreBoardDisplay.innerHTML = scoreBoard
+generateDeck()
+shuffledeck()
+player1.name = "player1"
+player1.hand = []
+player1.isPlaying = true
+player1.handScore = 0
+computer.name = "computer"
+computer.hand = []
+computer.isPlaying = false
+computer.handScore = 0  
+playerScoreDisplay.innerHTML = 0
+computerScoreDisplay.innerHTML = 0
+document.querySelector("#player1-hand").innerHTML= ""
+document.querySelector("#computer-hand").innerHTML= ""
 }
 // win conditions
 // if ((player1.handScore = 21)) {
