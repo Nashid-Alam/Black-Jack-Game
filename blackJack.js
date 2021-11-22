@@ -17,9 +17,10 @@ const computer = {
   handScore: 0,
 }
 const scoreBoardDisplay =document.querySelector(".money")
+const cashoutButton = document.querySelector(".cashout-Button")
 const hitButton = document.querySelector(".hitButton")
 const standButton = document.querySelector(".standButton")
-const resetButton = document.querySelector(".resetButton")
+const resetButton = document.querySelector(".playagain-Button")
 
 const playerScoreDisplay = document.querySelector("#player1Score")
 const computerScoreDisplay = document.querySelector("#computerScore")
@@ -181,6 +182,10 @@ computerScoreDisplay.innerHTML = 0
 document.querySelector("#player1-hand").innerHTML= ""
 document.querySelector("#computer-hand").innerHTML= ""
 }
+
+function cashout(){
+    document.body.innerHTML = scoreBoard
+}
 // win conditions
 // if ((player1.handScore = 21)) {
 //   console.log("player 1 wins")
@@ -217,3 +222,4 @@ document.querySelector("#computer-hand").innerHTML= ""
 hitButton.addEventListener("click", hitPlayer)
 standButton.addEventListener("click", standPlayer)
 resetButton.addEventListener('click', playAgain)
+cashoutButton.addEventListener('click',cashout)
