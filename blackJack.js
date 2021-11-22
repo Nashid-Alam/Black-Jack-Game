@@ -1,21 +1,28 @@
 let suits = ["&hearts;", "&spades;", "&clubs;", "&diams;"]
 let cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "K", "Q", "A"]
 let deck = []
+let gameOver = false
 
-let playerHand = []
-let player1Counter = 0
-let playerIsPlaying = true
-let computerHand = []
-let computerCounter = 0
+const player1 = {
+  name: "player1",
+  hand: [],
+  isPlaying: true,
+  handScore: 0,
+}
+const computer = {
+  name: "computer",
+  hand: [],
+  isPlaying: false,
+  handScore: 0,
+}
 
-let hit1 = document.querySelector(".hit1")
-const stand1 = document.querySelector(".stand1")
-const counterPlayer1Display = document.querySelector(".counterPlayer1")
-const countercomputerDisplay = document.querySelector(".counterComputer")
-const hit2 = document.querySelector(".hit2")
-const stand2 = document.querySelector(".stand2")
+const hitButton = document.querySelector(".hitButton")
+const standButton = document.querySelector(".standButton")
 
-//Generate the deck
+const playerScoreDisplay = document.querySelector("#player1Score")
+const computerScoreDisplay = document.querySelector("#computerScore")
+
+//Generates the deck
 for (let i = 0; i < cards.length; i++) {
   for (let j = 0; j < suits.length; j++) {
     let value = null
@@ -36,59 +43,74 @@ for (let i = 0; i < cards.length; i++) {
   }
 }
 
+// Draw card function
+function drawCard() {
+  if (!gameOver) {
+    const card = deck.pop()
+    return card
+  }
+}
+
 // Hit function
-function hitCardPlayer1(e) {
-  if (!playerIsPlaying) {
+function hitMe(player) {
+  if (!player.isPlaying) {
     return
   }
 
-  if (player1Counter >= 21) {
-    // Do things here because game is over.  Either player1 lost = Bust, or player1 won
+  if (player.handScore >= 21) {
     return
   }
 
-  randomIndex = Math.floor(Math.random() * deck.length)
-  randomDraw = deck[randomIndex]
-  playerHand.push(randomDraw)
+  const card = drawCard()
+  player.hand.push(card)
+  player.handScore = player.handScore + card.value
 
-  const handOl = document.querySelector("#player1-hand")
   const cardLi = document.createElement("li")
   const cardSuitTop = document.createElement("div")
   const cardValue = document.createElement("div")
   const cardSuitBottom = document.createElement("div")
-  if (randomDraw.suit === "&hearts;" || randomDraw.suit === "&diams;") {
+
+  cardLi.className = "card"
+  cardSuitTop.className = "suitTop"
+  cardValue.className = "cardValue"
+  cardSuitBottom.className = "suitBottom"
+
+  if (card.suit === "&hearts;" || card.suit === "&diams;") {
     cardSuitTop.style.color = "red"
-    cardSuitTop.innerHTML = randomDraw.suit
     cardValue.style.color = "red"
-    cardValue.innerHTML = randomDraw.card
     cardSuitBottom.style.color = "red"
-    cardSuitBottom.innerHTML = randomDraw.suit
   } else {
     cardSuitTop.style.color = "black"
-    cardSuitTop.innerHTML = randomDraw.suit
     cardValue.style.color = "black"
-    cardValue.innerHTML = randomDraw.card
     cardSuitBottom.style.color = "black"
-    cardSuitBottom.innerHTML = randomDraw.suit
   }
-  cardLi.className = "cardLayout"
-  cardSuitTop.className = "suitTop"
-  cardValue.className = "card"
-  cardSuitBottom.className = "suitBottom"
+
+  cardSuitTop.innerHTML = card.suit
+  cardValue.innerHTML = card.card
+  cardSuitBottom.innerHTML = card.suit
 
   cardLi.append(cardSuitTop)
   cardLi.append(cardValue)
   cardLi.append(cardSuitBottom)
+
+  const handOl = document.querySelector(`#${player.name}-hand`)
   handOl.append(cardLi)
-
-  player1Counter = player1Counter + randomDraw.value
-  counterPlayer1Display.innerHTML = player1Counter
 }
 
-// Stand function
-function standPlayer1(e) {
-  playerIsPlaying = false
+// Event Litsener Functions
+function hitPlayer(e) {
+  hitMe(player1)
+  playerScoreDisplay.innerHTML = player1.handScore
 }
+
+function standPlayer(e) {
+  player1.isPlaying = false
+  computer.isPlaying = true
+
+  // run the computer function
+}
+
+// function
 
 function computerTurn() {
   //if(playerIsPlaying = false){
@@ -137,11 +159,77 @@ function computerTurn() {
 // }
 
 //Event listeners
-hit1.addEventListener("click", hitCardPlayer1)
-stand1.addEventListener("click", standPlayer1)
-hit2.addEventListener("click", computerTurn)
+hitButton.addEventListener("click", hitPlayer)
+standButton.addEventListener("click", standPlayer)
 
-// Suffle Deck Function
-//function shuffleDeck(){
 
-//}
+
+
+
+
+
+// let playerHand = []
+// let player1Counter = 0
+// let playerIsPlaying = true
+// let computerHand = []
+// let computerCounter = 0
+
+
+
+// const counterPlayer1Display = document.querySelector(".counterPlayer1")
+// const countercomputerDisplay = document.querySelector(".counterComputer")
+// const hit2 = document.querySelector(".hit2")
+// const stand2 = document.querySelector(".stand2")
+
+// hitCardPlayer1(e) {
+//   if (!playerIsPlaying) {
+//     return
+//   }
+
+//   if (player1Counter >= 21) {
+//     // Do things here because game is over.  Either player1 lost = Bust, or player1 won
+//     return
+//   }
+
+//   randomIndex = Math.floor(Math.random() * deck.length)
+//   randomDraw = deck[randomIndex]
+//   playerHand.push(randomDraw)
+
+//   const handOl = document.querySelector("#player1-hand")
+//   const cardLi = document.createElement("li")
+//   const cardSuitTop = document.createElement("div")
+//   const cardValue = document.createElement("div")
+//   const cardSuitBottom = document.createElement("div")
+//   if (randomDraw.suit === "&hearts;" || randomDraw.suit === "&diams;") {
+//     cardSuitTop.style.color = "red"
+//     cardSuitTop.innerHTML = randomDraw.suit
+//     cardValue.style.color = "red"
+//     cardValue.innerHTML = randomDraw.card
+//     cardSuitBottom.style.color = "red"
+//     cardSuitBottom.innerHTML = randomDraw.suit
+//   } else {
+//     cardSuitTop.style.color = "black"
+//     cardSuitTop.innerHTML = randomDraw.suit
+//     cardValue.style.color = "black"
+//     cardValue.innerHTML = randomDraw.card
+//     cardSuitBottom.style.color = "black"
+//     cardSuitBottom.innerHTML = randomDraw.suit
+//   }
+//   cardLi.className = "cardLayout"
+//   cardSuitTop.className = "suitTop"
+//   cardValue.className = "card"
+//   cardSuitBottom.className = "suitBottom"
+
+//   cardLi.append(cardSuitTop)
+//   cardLi.append(cardValue)
+//   cardLi.append(cardSuitBottom)
+//   handOl.append(cardLi)
+
+//   player1Counter = player1Counter + randomDraw.value
+//   counterPlayer1Display.innerHTML = player1Counter
+// }
+
+// // Stand function
+// // function standPlayer1(e) {
+// //   playerIsPlaying = false
+// // }

@@ -21,7 +21,7 @@ ol {
   margin-left: 100px;
   list-style: none;
 }
-.cardLayout {
+.card {
   display: inline-block;
   height: 200px;
   width: 120px;
@@ -32,13 +32,7 @@ ol {
   opacity: 0.7;
   
 }
-.suitBottom {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  font-size: 20px;
-}
-.card {
+.cardValue {
   display: flex;
   position: relative;
   height: 70%;
@@ -51,12 +45,16 @@ ol {
   font-size: 40px;
   fill-opacity: 1;
 }
-
-.hit1 {
-  margin: 100px;
-}
-.stand1 {
+.suitBottom {
   display: flex;
   justify-content: flex-end;
-  flex-direction: column;
+  align-items: flex-end;
+  font-size: 20px;
+}
+
+.hitButton {
+
+}
+.standButton {
+
 }
