@@ -2,6 +2,7 @@ let suits = ["&hearts;", "&spades;", "&clubs;", "&diams;"]
 let cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "K", "Q", "A"]
 let deck = []
 let gameOver = false
+let scoreBoard =100
 
 const player1 = {
   name: "player1",
@@ -15,9 +16,10 @@ const computer = {
   isPlaying: false,
   handScore: 0,
 }
-const scoreBoard =document.querySelector(".money")
+const scoreBoardDisplay =document.querySelector(".money")
 const hitButton = document.querySelector(".hitButton")
 const standButton = document.querySelector(".standButton")
+const resetButton = document.querySelector(".resetButton")
 
 const playerScoreDisplay = document.querySelector("#player1Score")
 const computerScoreDisplay = document.querySelector("#computerScore")
@@ -112,11 +114,14 @@ function hitMe(player) {
   handOl.append(cardLi)
   
   if ((player1.handScore === 21)) {
+    scoreBoard = scoreBoard + 100
+    scoreBoardDisplay.innerHTML = scoreBoard
       console.log("player 1 wins")
      }
   if (player1.handScore > 21) {
     console.log("player 1 loses")
-    
+    scoreBoard = scoreBoard - 100
+    scoreBoardDisplay.innerHTML = scoreBoard
    }
 
 }
@@ -156,6 +161,11 @@ function computerGoes() {
   
 }
 
+
+function playAgain(){
+  location.reload();
+  scoreBoardDisplay.innerHTML = scoreBoard
+}
 // win conditions
 // if ((player1.handScore = 21)) {
 //   console.log("player 1 wins")
@@ -191,3 +201,4 @@ function computerGoes() {
 //Event listeners
 hitButton.addEventListener("click", hitPlayer)
 standButton.addEventListener("click", standPlayer)
+resetButton.addEventListener('click', playAgain)
