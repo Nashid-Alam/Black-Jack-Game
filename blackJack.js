@@ -150,16 +150,24 @@ function computerGoes() {
     // settimer before running the loop again
   }
   if (computer.handScore > 21) {
+    scoreBoard = scoreBoard + 100
+    scoreBoardDisplay.innerHTML = scoreBoard
     return console.log("computer loses and player 1 wins")
     }
    
  if (player1.handScore > computer.handScore && player1.handScore<=21) {
-    return console.log("computer loses and player 1 wins")
+  scoreBoard = scoreBoard + 100
+  scoreBoardDisplay.innerHTML = scoreBoard
+  return console.log("computer loses and player 1 wins")
    } 
    
  if (player1.handScore === computer.handScore) {
+  scoreBoard = scoreBoard - 0
+  scoreBoardDisplay.innerHTML = scoreBoard
    return console.log('its a tie!!')
    } else {
+    scoreBoard = scoreBoard - 100
+    scoreBoardDisplay.innerHTML = scoreBoard
      return console.log("player 1 loses computer wins")
    }
   
