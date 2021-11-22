@@ -139,13 +139,14 @@ function hitPlayer(e) {
 }
 
 function standPlayer(e) {
+
  if(gameOver===false){
- 
   player1.isPlaying = false
   computer.isPlaying = true
   
   computerGoes()
- }    
+     
+}
 }
 
 function computerGoes() {
@@ -194,6 +195,7 @@ playerScoreDisplay.innerHTML = 0
 computerScoreDisplay.innerHTML = 0
 document.querySelector("#player1-hand").innerHTML= ""
 document.querySelector("#computer-hand").innerHTML= ""
+gameOver=false
 }
 
 function cashout(){
