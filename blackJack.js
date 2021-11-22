@@ -121,11 +121,13 @@ function hitMe(player) {
     scoreBoard = scoreBoard + 100
     scoreBoardDisplay.innerHTML = scoreBoard
       console.log("player 1 wins")
+      gameOver=true
      }
   if (player1.handScore > 21) {
     console.log("player 1 loses")
     scoreBoard = scoreBoard - 100
     scoreBoardDisplay.innerHTML = scoreBoard
+    gameOver=true
    }
 
 }
@@ -137,10 +139,13 @@ function hitPlayer(e) {
 }
 
 function standPlayer(e) {
+ if(gameOver===false){
+ 
   player1.isPlaying = false
   computer.isPlaying = true
+  
   computerGoes()
-     
+ }    
 }
 
 function computerGoes() {

@@ -79,8 +79,10 @@ color: red;
   background-repeat: no-repeat;
   justify-content: center;
   align-items: center;
-  height:100%;
+  height:auto;
   width:100%;
+  background-color: black;
+  
 
 }
 .startgame{
@@ -88,5 +90,7 @@ color: red;
   font-size: 60px;
   color: yellow;
   margin:400px 0px 0px 0px;
+  height: 30%;
+  width: 30%;
   
 }
