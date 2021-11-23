@@ -12,23 +12,29 @@
       <div class= "cashValue">Cash Value</div>
       <div class= "money">$100</div>
     </header>
+
     <section>
       <div class="currentScore counterPlayer1" id="player1Score">0</div>
       <ol id="player1-hand"></ol>
       <div class = "player1-result">player 1 result</div>
     </section>
+   
+    <div class="btnDiv">
+      <button type="button" class="hitButton">Hit</button>
+      <button type="button" class="standButton">Stand</button>
+    </div>
 
-    <button type="button" class="hitButton">Hit</button>
-    <button type="button" class="standButton">Stand</button>
-    
-    
     <section>
       <div class="currentScore counterComputer" id="computerScore">0</div>
       <ol id="computer-hand"></ol>
       <div class = "computer-result">computer-result</div>
     </section>
-    <button type="button" class="playagain-Button">play again?</button>
-    <button type="button" class="cashout-Button">cashout!</button>
+
+    <div class="btnDiv">
+      <button type="button" class="reset-Button">Play Again</button>
+      <button type="button" class="cashout-Button">Cashout</button>
+    </div>
+
     <script src="blackJack.js"></script>
   </body>
 </html>
