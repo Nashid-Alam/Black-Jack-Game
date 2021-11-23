@@ -120,3 +120,25 @@ color: red;
   margin-left: 10px;
   margin-top: 40px;
 }
+header{
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.cashValue{
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  margin-right: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+}
+.money{
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  margin-right: 10px;
+  color:green;
+  font-size: 40px;
+
+}
