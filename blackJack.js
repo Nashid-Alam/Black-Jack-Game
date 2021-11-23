@@ -50,6 +50,7 @@ function generateDeck() {
 }
 generateDeck()
 
+// Fisher-Yates algorithm.
 function shuffledeck() {
   for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * i)

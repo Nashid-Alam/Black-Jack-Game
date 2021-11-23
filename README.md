@@ -21,5 +21,6 @@ The game will have 2 players. A deck of 52 cards.At each turn the dealer(compute
  
 ### **Credits**
 Black Jack: [wiki page](https://en.wikipedia.org/wiki/Blackjack)
+Black Jack: [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
 ### **link to my trello**
 Trello: [trello](https://trello.com/b/ytko5aU4/simple-project-board)
