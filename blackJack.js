@@ -1,5 +1,5 @@
 let suits = ["&hearts;", "&spades;", "&clubs;", "&diams;"]
-let cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "K", "Q", "A"]
+let cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 let deck = []
 let gameOver = false
 let scoreBoard = 100
@@ -50,7 +50,6 @@ function generateDeck() {
 }
 generateDeck()
 
-//shuffle the deck
 function shuffledeck() {
   for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * i)
@@ -61,7 +60,6 @@ function shuffledeck() {
 }
 shuffledeck()
 
-// Draw card function
 function drawCard() {
   if (!gameOver) {
     const card = deck.pop()
@@ -69,9 +67,27 @@ function drawCard() {
   }
 }
 
-function updateScore(player){
-  player.handScore = 100
+function updateScore(player) {
+  let tempScore = 0
+  let indexOfAces = []
 
+  for (let i = 0; i < player.hand.length; i++) {
+    tempScore = tempScore + player.hand[i].value
+
+    if (player.hand[i].value === 11) {
+      indexOfAces.push(i)
+    }
+  }
+
+  if (tempScore > 21 && indexOfAces.length > 0) {
+    while (tempScore > 21) {
+      player.hand[indexOfAces[0]].value = 1
+      indexOfAces.shift()
+      tempScore = tempScore - 10
+    }
+  }
+
+  player.handScore = tempScore
 }
 
 function hitMe(player) {
@@ -125,7 +141,6 @@ function hitMe(player) {
     gameOver = true
   }
   if (player1.handScore > 21) {
-    console.log("player 1 loses")
     scoreBoard = scoreBoard - 100
     scoreBoardDisplay.innerHTML = scoreBoard
     player1resultDisplay.style.opacity = "1"
@@ -207,37 +222,6 @@ function cashout(e) {
   document.body.style.color = "white"
   document.body.style.fontSize = "40px"
 }
-// win conditions
-// if ((player1.handScore = 21)) {
-//   console.log("player 1 wins")
-// }
-
-// if (player1.handScore > 21) {
-//   console.log("player 1 loses")
-// }
-
-// if (computer.handScore > 21) {
-//   console.log("computer loses and player 1 wins")
-// }
-
-// if (player1.handScore > computer.handScore) {
-//   console.log("computer loses and player 1 wins")
-// }
-
-// if (player1.handScore = computer.handScore) {
-//   console.log('its a tie!!')
-// } else {
-//   console.log("player 1 loses computer wins")
-// }
-
-//(computerCounter>=17 && computerCounter<=21){
-//   if(player1Counter>computerCounter){
-//     console.log("player 1 wins")
-//   }
-//   else{
-//     console.log( "player 2 wins")
-//   }
-// }
 
 //Event listeners
 hitButton.addEventListener("click", hitPlayer)
