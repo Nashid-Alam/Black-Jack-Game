@@ -32,6 +32,7 @@ ol {
   margin-left: 100px;
   list-style: none;
   opacity:1.0;
+  margin-right:0px;
 }
 .card {
   display: inline-block;
@@ -93,4 +94,29 @@ color: red;
   height: 30%;
   width: 30%;
   
+}
+
+.player1-result{
+  color:yellow;
+  font-size:40px;
+  opacity: 1;
+  margin-left: 200px;
+  margin-top: 40px;
+
+}
+
+.player1-result{
+  color:yellow;
+  font-size:40px;
+  opacity: 0;
+  margin-left: 10px;
+  margin-top: 40px;
+}
+
+.computer-result{
+  color:yellow;
+  font-size:40px;
+  opacity: 0;
+  margin-left: 10px;
+  margin-top: 40px;
 }

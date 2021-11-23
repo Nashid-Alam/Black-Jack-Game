@@ -24,6 +24,9 @@ const resetButton = document.querySelector(".playagain-Button")
 
 const playerScoreDisplay = document.querySelector("#player1Score")
 const computerScoreDisplay = document.querySelector("#computerScore")
+const player1resultDisplay = document.querySelector(".player1-result")
+const computerresultDisplay = document.querySelector(".computer-result")
+
 
 function generateDeck(){
 for (let i = 0; i < cards.length; i++) {
@@ -120,13 +123,16 @@ function hitMe(player) {
   if ((player1.handScore === 21)) {
     scoreBoard = scoreBoard + 100
     scoreBoardDisplay.innerHTML = scoreBoard
-      console.log("player 1 wins")
-      gameOver=true
+    player1resultDisplay.style.opacity = "1"
+    player1resultDisplay.innerHTML =" winner!"
+    gameOver=true
      }
   if (player1.handScore > 21) {
     console.log("player 1 loses")
     scoreBoard = scoreBoard - 100
     scoreBoardDisplay.innerHTML = scoreBoard
+    player1resultDisplay.style.opacity = "1"
+    player1resultDisplay.innerHTML ="Bust!"
     gameOver=true
    }
 
@@ -158,23 +164,28 @@ function computerGoes() {
   if (computer.handScore > 21) {
     scoreBoard = scoreBoard + 100
     scoreBoardDisplay.innerHTML = scoreBoard
-    return console.log("computer loses and player 1 wins")
+    computerresultDisplay.style.opacity = "1"
+    return computerresultDisplay.innerHTML ="Bust!"
     }
    
  if (player1.handScore > computer.handScore && player1.handScore<=21) {
   scoreBoard = scoreBoard + 100
   scoreBoardDisplay.innerHTML = scoreBoard
-  return console.log("computer loses and player 1 wins")
+  computerresultDisplay.style.opacity = "1"
+  return computerresultDisplay.innerHTML ="Bust!"
    } 
    
  if (player1.handScore === computer.handScore) {
   scoreBoard = scoreBoard - 0
   scoreBoardDisplay.innerHTML = scoreBoard
-   return console.log('its a tie!!')
+  computerresultDisplay.style.opacity = "1"
+  return computerresultDisplay.innerHTML ="its a tie!"
+   
    } else {
     scoreBoard = scoreBoard - 100
     scoreBoardDisplay.innerHTML = scoreBoard
-     return console.log("player 1 loses computer wins")
+    computerresultDisplay.style.opacity = "1"
+    return computerresultDisplay.innerHTML ="Dealer wins"
    }
   
 }
